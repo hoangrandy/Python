@@ -1,4 +1,4 @@
-#This program will copy a file and copy it to a different file
+#This program will copy a file and copy it to a different file.
 #You will have to run this with two arguements e.g. python py17.py test.txt copy.txt
 from sys import argv
 from os.path import exists
