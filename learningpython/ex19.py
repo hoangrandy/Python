@@ -1,4 +1,4 @@
-#More functions and variables
+#More functions and variables 
 #Variables in your function are not connected to the variables in your script
 
 def cheese_and_crackers (cheese_count, boxes_of_crackers) :
