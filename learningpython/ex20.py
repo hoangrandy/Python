@@ -16,9 +16,9 @@ def print_all(f):
 def rewind(f):
     f.seek(0)
 
-# f.readline() reads a single line from the file; a newline character (\n) is left
-# at the end of the string, and is only omitted on the last line of the file if the
-# file doesn’t end in a newline.
+# f.readline() reads a single line from the file; a newline character (\n)
+# is left at the end of the string, and is only omitted on the last line of the
+# file if the line ends in newline.
 def print_a_line(line_count, f):
     print line_count, f.readline()
 
