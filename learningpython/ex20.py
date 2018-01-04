@@ -1,4 +1,4 @@
-# This program is for practicing functions and understanding them
+# This program is for practicing functions and understanding them 
 # This program will print the whole file then print out the first 3 lines
 
 from sys import argv
