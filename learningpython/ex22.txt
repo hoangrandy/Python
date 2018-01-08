@@ -1,0 +1,23 @@
+print " "  - This prints out what is inside
+#          - This is a comment, whatever is after # is not read
+def        - This is used to define a function e.g. def print_all(f):
+            don't forget the indent                     print f.read()
+%r, %d, %s - This prints whatever is given after the line
+             s = string
+             r = whatever
+             d = value
+print"""   - This prints multiple lines of code without repeating print""
+\t         - This will create a tab
+\n         - This will create a new line
+\\         - This will create a blackslash in the output
+\t*        - This is a list
+raw_input()- This asks for user input
+from sys import argv    - script, first, second, third = argv
+txt = open(filename)
+print txt.read()
+target.truncate()
+target.write("\n")
+target.close()
+from os.path import exists
+
+return
