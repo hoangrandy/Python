@@ -1,4 +1,4 @@
-#This program is for practicing functions and calling them
+#This program is for practicing functions and calling them 
 
 #This function will add inputs a and b and returns the answer
 def add(a, b):
