@@ -16,22 +16,37 @@ TAX = 9/100
 
 # Prompts the user to enter the amount of the first item in $
 item_one = input('Please type in the price of the first item in $: ')
+cost_one = float(item_one)
+
 # Prompts the user to enter the amount of the second item in $
 item_two = input('Please type in the price of the second item in $: ')
+cost_two = float(item_two)
+
 # Prompts the user to enter the amount of the third item in $
 item_three = input('Please type in the price of the third item in $: ')
+cost_three = float(item_three)
 
-# Create a variable that adds the prices of three items together as well as
-# converts the input to floats
-subtotal_cost = round(float(item_one),2) + round(float(item_two),2) \
-                + round(float(item_three),2)
 
-# Let's print out the subtotal
-print('SUBTOTAL: ${}'.format(subtotal_cost))
+# Calculates the subtotal amount
+subtotal_amount = cost_one + cost_two + cost_three
 
-sales_tax = subtotal_cost * TAX
-print('SALES TAX: ${}'.format(sales_tax))
+# Calculates the sales tax
+salestax_amount = subtotal_amount * TAX
 
-total = (subtotal_cost + sales_tax)
-print('TOTAL: ${}'.format(total))
+# Calculates the total price
+total_amount = (subtotal_amount + salestax_amount)
 
+# Making the output end with two decimal points
+subtotal_cost = f'${subtotal_amount:.2f}'
+salestax_cost = f'${salestax_amount:.2f}'
+total_cost = f'${total_amount:.2f}'
+
+# Making the output align to the right
+subtotal_output = f'SUBTOTAL:{subtotal_cost:>8}'
+salestax_output = f'SALES TAX:{salestax_cost:>8}'
+total_output = f'TOTAL:{total_cost:>8}'
+
+#print out the output
+print(subtotal_output)
+print(salestax_output)
+print(total_output)
