@@ -33,5 +33,5 @@ sales_tax = subtotal_cost * TAX
 print('SALES TAX: ${}'.format(sales_tax))
 
 total = (subtotal_cost + sales_tax)
-print('TOTAL: ${}'.format(total))
+print('TOTAL: ${}'.format(total)) 
 
