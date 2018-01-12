@@ -42,9 +42,9 @@ salestax_cost = f'${salestax_amount:.2f}'
 total_cost = f'${total_amount:.2f}'
 
 # Making the output align to the right
-subtotal_output = f'SUBTOTAL:{subtotal_cost:>8}'
-salestax_output = f'SALES TAX:{salestax_cost:>7}'
-total_output = f'TOTAL:{total_cost:>11}'
+subtotal_output = f'SUBTOTAL:{subtotal_cost:>12}'
+salestax_output = f'SALES TAX:{salestax_cost:>11}'
+total_output = f'TOTAL:{total_cost:>15}'
 
 #print out the output
 print(subtotal_output)
