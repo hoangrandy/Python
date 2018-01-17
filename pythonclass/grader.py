@@ -33,15 +33,16 @@ while grade_input:
 
 
 lowest_grade = min(grades) # Give the lowest grade a variable
-if len(grades) > 4: # If the the list of grades is greater than 4 then run
+if len(grades) >= 4: # If the the list of grades is greater than 4 then run
     grades.remove(lowest_grade) # Remove the lowest grade
-    print ('Lowest grade removed: ',lowest_grade) #Print out the lowest score
+    print ('Lowest grade dropped: ',lowest_grade) #Print out the lowest score
 
 # This section will print out the letter grade depending on what score you got
 total_grade = sum(grades)  # Take the grades list and add the values
 number_grade = len(grades)
 average_total = total_grade / number_grade  # Total / number of inputs
-print('Course Average: ', average_total)  # Prints out the Average
+average_output = f'{average_total:.1f}' # Rounding and .xx place decimal
+print('Course Average: ', average_output)  # Prints out the Average
 
 if average_total < 60 and average_total > 0:
     print('Letter Grade: F')
