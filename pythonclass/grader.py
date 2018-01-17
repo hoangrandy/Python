@@ -30,7 +30,10 @@ while grade_input:
 
     else: # If the user types a number, change it to a float
         final_grade = float(user_input)
-        grades.append(final_grade) # Insert the input into the string
+        if final_grade > 100 or final_grade < 0:
+            print('Invalid grade entered, please enter a number between 1-100')
+        grades.append(final_grade) # Insert the input into the list
+
 
 
 
@@ -54,8 +57,10 @@ elif average_total >= 70 and average_total < 80:
     print('Letter Grade: C')
 elif average_total >= 80 and average_total < 90:
     print('Letter Grade: B')
-else:
+elif average_total >= 90 and average_total < 100:
     print('Letter Grade: A')
+else:
+    print('You might have entered an invalid input...please try again')
 
 
 
