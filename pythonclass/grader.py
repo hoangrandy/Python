@@ -11,6 +11,7 @@ Calculating the final grade in class
 
 This program will calculate the user's final grade by finding the average
 of all the user's grades and print it
+If you enter four or more grades, the lowest grade will be dropped
 """
 
 
@@ -25,6 +26,7 @@ while grade_input:
         grade_input = False
         if user_input == 'end' and grades == []:
             print('No grades entered.')
+            exit() # Exits the program to avoid exception error
 
     else: # If the user types a number, change it to a float
         final_grade = float(user_input)
