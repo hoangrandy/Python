@@ -30,9 +30,11 @@ while grade_input:
 
     else: # If the user types a number, change it to a float
         final_grade = float(user_input)
+        grades.append(final_grade)  # Insert the input into the list
         if final_grade > 100 or final_grade < 0: # input is too high or low
             print('Invalid grade entered, please enter a number between 1-100')
-        grades.append(final_grade) # Insert the input into the list
+            exit()
+
 
 
 
