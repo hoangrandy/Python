@@ -61,6 +61,10 @@ elif average_total >= 90 and average_total < 100:
     print('Letter Grade: A')
 else:
     print('You might have entered an invalid input...please try again')
+# Print out what numbers were used in calculating the final grade
+print("Based on the following grades: ")
+for grade in grades: #Print out
+    print(grade)
 
 
 
