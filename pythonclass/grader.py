@@ -38,11 +38,11 @@ while grade_input:
 
 
 
-
-LOWESTGRADE = min(grades) # Give the lowest grade a variable
-if len(grades) >= 4: # If the the list of grades is greater than 4 then run
-    grades.remove(LOWESTGRADE) # Remove the lowest grade
-    print ('Lowest grade dropped: ',LOWESTGRADE) #Print out the lowest score
+DROP = 4
+lowest_grade = min(grades) # Give the lowest grade a variable
+if len(grades) >= DROP: # If the the list of grades is greater than 4 then run
+    grades.remove(lowest_grade) # Remove the lowest grade
+    print ('Lowest grade dropped: ',lowest_grade) #Print out the lowest score
 
 # This section will print out the letter grade depending on what score you got
 total_grade = sum(grades)  # Take the grades list and add the values
