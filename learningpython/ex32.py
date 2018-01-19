@@ -1,9 +1,9 @@
 # -----------------------------------------------------------------------------
-# Name:        name
-# Purpose:
+# Name:        Playing with loops and lists
+# Purpose:     Practice loops and lists
 #
-# Author: Randy Hoang
-# Date:
+# Author:      Randy Hoang
+# Date:        1/19/2018
 # -----------------------------------------------------------------------------
 the_count = [1, 2, 3, 4, 5]
 fruits = ['apples', 'orange', 'pears', 'apricots']
