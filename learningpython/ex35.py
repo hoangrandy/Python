@@ -1,4 +1,4 @@
-# -----------------------------------------------------------------------------
+ # -----------------------------------------------------------------------------
 # Name:        Two doors game
 # Purpose:     Practicing with branches and functions
 #
@@ -8,13 +8,12 @@
 from sys import exit # This import the exit function which quits the program
 
 def gold_room(): # Create the room gold room within gold_room() function
-    print "This room is full of  gold. How much do you take"
+    print "This room is full of gold. How much do you take"
 
     next = raw_input("> ") # Asks user for the amount of gold they would want
-    how_much = int(next) # Makes the input an integer
-    if how_much < 49:
-        print "You grabbed", how_much, "gold pieces"
-    else: # If user doesn't type in a valid command they die
+    try:
+        how_much = int(next)
+    except ValueError:
         dead("Man, learn to type a number.")
 
     if how_much < 50: # User wins if they choose a number under 50
