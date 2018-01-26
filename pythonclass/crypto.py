@@ -52,6 +52,10 @@ def decrypt(word):
     decrypt a single word from the secret language
     If the word is not a valid word in the secret language, return None
     """
+    remove_tan = word[:-3]
+    if 'tan' in word:
+        print(word)
+
 
 
 
@@ -82,6 +86,7 @@ def choose_mode():
         return user_input
     else:
         print("Please enter a valid key (Make sure you capitalize!)")
+        exit()
 
 
 
@@ -97,9 +102,9 @@ def main():
     choose_mode()
     word = input('Please enter the word or phrase you would like to be '
                  'encrypted/decrypted: ')
-    if encrypt_toggle:
+    if choose_mode == encrypt_toggle: #fix this shit
         encrypt(word)
-    elif decrypt_toggle:
+    elif choose_mode == decrypt_toggle:
         decrypt(word)
 
 
