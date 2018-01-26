@@ -12,12 +12,12 @@ and a more detailed description here.
 """
 
 
-def starts_with_vowel():
+def starts_with_vowel(word):
     """
     return True if the word starts with a vowel and False otherwise
     """
 
-    word = input("Type words here") #might have to remove this
+
     for letter in word.split():
         vowel_check = word[0]
     if vowel_check in ['a', 'e', 'i', 'o', 'u']:
@@ -33,10 +33,12 @@ def encrypt(word):
     If the input starts with a non-vowel then take the first letter
     add it to the end instead and follow up with 'est'
     """
-    if starts_with_vowel() = True:
+
+
+    if starts_with_vowel(word) == True:
         vowel_add = 'tan'
-        print(word + vowel_add)
-    elif starts_with_vowel() = False:
+        print (word + vowel_add)
+    elif starts_with_vowel(word) == False:
         encrypt_word = word[1:]
         first_letter = word[0]
         encrypt_end = 'est'
@@ -50,6 +52,7 @@ def decrypt(word):
     decrypt a single word from the secret language
     If the word is not a valid word in the secret language, return None
     """
+
 
 
 def translate(text, mode):
@@ -70,19 +73,38 @@ def choose_mode():
     Prompt the user for input repeatedly until they enter 'E' or 'D'.
     Return the user's choice.
     """
+
+
     user_input = input("Press 'E' to encrypt or 'D' to Decrypt: ")
     if user_input == 'E':
-        encrypt()
+        return user_input
     elif user_input == 'D':
-        decrypt()
+        return user_input
     else:
         print("Please enter a valid key (Make sure you capitalize!)")
 
+
+
 def main():
-    # Get the user choice 'E' or 'D' and save it in a variable.
+
     # Prompt the user for the message to be translated.
     # Translate the message by calling translate - save result.
     # Print the result - or 'Invalid message' if applicable.
+
+    encrypt_toggle = 'E'  # Get the user choice 'E' and save to a variable
+    decrypt_toggle = 'D'  # Get the user choice 'D' and save it in a variable.
+
+    choose_mode()
+    word = input('Please enter the word or phrase you would like to be '
+                 'encrypted/decrypted: ')
+    if encrypt_toggle:
+        encrypt(word)
+    elif decrypt_toggle:
+        decrypt(word)
+
+
+
+
 
 
 if __name__ == '__main__':
