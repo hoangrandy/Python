@@ -13,9 +13,21 @@ and a more detailed description here.
 
 def starts_with_vowel(word):
     """
-    Enter your function docstring here
+    return True if the word starts with a vowel and False otherwise
     """
-    # return True if the word starts with a vowel and False otherwise
+    def starts_with_vowel():
+        """
+        Enter your function docstring here
+        """
+        # return True if the word starts with a vowel and False otherwise
+        word = input("Type words here")
+        for letter in word.split():
+            vowel_check = word[0]
+        if vowel_check in ['a', 'e', 'i', 'o', 'u']:
+            return True
+        else:
+            return False
+    
 
 def encrypt(word):
     """
