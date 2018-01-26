@@ -11,39 +11,46 @@ Enter your docstring with a one-line overview here
 and a more detailed description here.
 """
 
-def starts_with_vowel(word):
+
+def starts_with_vowel():
     """
     return True if the word starts with a vowel and False otherwise
     """
-    def starts_with_vowel():
-        """
-        Enter your function docstring here
-        """
-        # return True if the word starts with a vowel and False otherwise
-        word = input("Type words here")
-        for letter in word.split():
-            vowel_check = word[0]
-        if vowel_check in ['a', 'e', 'i', 'o', 'u']:
-            return True
-        else:
-            return False
+
+    word = input("Type words here") #might have to remove this
+    for letter in word.split():
+        vowel_check = word[0]
+    if vowel_check in ['a', 'e', 'i', 'o', 'u']:
+        return True
+    else:
+        return False
     
 
 def encrypt(word):
     """
-    Enter your function docstring here
+    encrypt a single word into the secret language
+    If the input starts with a vowel, then add tan to the end
+    If the input starts with a non-vowel then take the first letter
+    add it to the end instead and follow up with 'est'
     """
-    # encrypt a single word into the secret language
-    # call starts_with_vowel to decide which pattern to follow
-    # return a single word (encrypted)
+    if starts_with_vowel() = True:
+        vowel_add = 'tan'
+        print(word + vowel_add)
+    elif starts_with_vowel() = False:
+        encrypt_word = word[1:]
+        first_letter = word[0]
+        encrypt_end = 'est'
+        print(encrypt_word + first_letter + encrypt_end)
+
+
 
 
 def decrypt(word):
     """
-    Enter your function docstring here
+    decrypt a single word from the secret language
+    If the word is not a valid word in the secret language, return None
     """
-    # decrypt a single word from the secret language
-    # If the word is not a valid word in the secret language, return None
+
 
 def translate(text, mode):
     """
