@@ -32,14 +32,16 @@ def encrypt(word):
     add it to the end instead and follow up with 'est'
     """
 
-    if starts_with_vowel(word) == True:
+    if starts_with_vowel(word) == True: 
         vowel_add = 'tan'
-        return word + vowel_add
+        encrypt_vowel = word + vowel_add
+        return encrypt_vowel
     elif starts_with_vowel(word) == False:
         encrypt_word = word[1:]
         first_letter = word[0]
         encrypt_end = 'est'
-        return encrypt_word + first_letter + encrypt_end
+        encrypt_conson = encrypt_word + first_letter + encrypt_end
+        return (encrypt_conson)
 
 
 def decrypt(word):
@@ -56,10 +58,11 @@ def decrypt(word):
     if starts_with_vowel(word) == True and 'tan' in word:
         return remove_tan
     elif beg_letter not in vowel and est in word:
-        return beg_letter + remove_est
+        decrypt_conson =  beg_letter + remove_est
+        return decrypt_conson
 
 
-def translate(text, mode):
+def translate(word,mode):
     """
     Enter your function docstring here
     """
@@ -74,30 +77,32 @@ def translate(text, mode):
     # and return it
 
 
-    indiv_words = word.split() #fix
+    indiv_words = word.split()
     encrypt_toggle = 'E'  # Get the user choice 'E' and save to a variable
     decrypt_toggle = 'D'  # Get the user choice 'D' and save it in a variable.
-    for indiv_words in word:
-        if user_input == encrypt_toggle:  # fix this shit
-            encrypt(indiv_words)
-        elif user_input == decrypt_toggle:
-            decrypt(indiv_words)
-        phrase = ''.join(indiv_words)
+    for words in indiv_words:
+        if mode == encrypt_toggle:
+            encrypt(words)
+            print (encrypt(word))
+
+        elif mode == decrypt_toggle:
+            decrypt(words)
+            print (decrypt(word))
 
 
 
 
-def choose_mode():
+
+def choose_mode(mode):
     """
     Prompt the user for input repeatedly until they enter 'E' or 'D'.
     Return the user's choice.
     """
 
-    user_input = input("Press 'E' to encrypt or 'D' to Decrypt: ")
-    if user_input == 'E':
-        return user_input
-    elif user_input == 'D':
-        return user_input
+    if mode == 'E':
+        return mode
+    elif mode == 'D':
+        return mode
     else:
         print("Please enter a valid key (Make sure you capitalize!)")
         exit()
@@ -108,11 +113,12 @@ def main(): #fix
     # Translate the message by calling translate - save result.
     # Print the result - or 'Invalid message' if applicable.
 
-
-
-    choose_mode()
+    mode = input("Press 'E' to encrypt or 'D' to Decrypt: ")
+    choose_mode(mode)
     word = input('Please enter the word or phrase you would like to be '
                  'encrypted/decrypted: ')
+    translate(word,mode)
+
 
 
 
