@@ -2,8 +2,8 @@
 # Name:        crypto
 # Purpose:     CS 21 assignment # 3
 #
-# Author:
-# Date:
+# Author:      Randy Hoang
+# Date:        1/27/2018
 # -----------------------------------------------------------------------------
 """
 Enter your docstring with a one-line overview here
@@ -49,17 +49,24 @@ def decrypt(word):
     decrypt a single word from the secret language
     If the word is not a valid word in the secret language, return None
     """
+    if len(word) < 4:
+        print('Wrong input. Please enter an encrpyted message')
+        main()
     remove_tan = word[0:-3]
     remove_est = word[0:-4]
-    beg_letter = word[-4]
+
     est = word[-3:]
     vowel = ['a', 'e', 'i', 'o','u']
-
+    beg_letter = word[-4]
     if starts_with_vowel(word) == True and 'tan' in word:
         return remove_tan
+
     elif beg_letter not in vowel and est in word:
         decrypt_conson =  beg_letter + remove_est
         return decrypt_conson
+    else:
+        print('Wrong input. Please enter an encrpyted message')
+        exit()
 
 
 def translate(word,mode):
@@ -95,13 +102,14 @@ def translate(word,mode):
         elif mode == decrypt_toggle:
             decrypt(words)
             my_list.append(decrypt(words))
+            new_list = list(reversed(my_list))
 
-            print(my_list)
+
 
 
     output = ' '.join(new_list)
-    print(output)
-
+    print("The secret message is: ",output)
+    exit()
 
 
 def choose_mode(mode):
@@ -116,7 +124,7 @@ def choose_mode(mode):
         return mode
     else:
         print("Please enter a valid key (Make sure you capitalize!)")
-        exit()
+        main()
 
 
 def main():
@@ -124,7 +132,7 @@ def main():
     # Translate the message by calling translate - save result.
     # Print the result - or 'Invalid message' if applicable.
 
-    mode = input("Press 'E' to encrypt or 'D' to Decrypt: ")
+    mode = input("Press 'E' to Encrypt or 'D' to Decrypt: ")
     choose_mode(mode)
     word = input('Please enter the word or phrase you would like to be '
                  'encrypted/decrypted: ')
