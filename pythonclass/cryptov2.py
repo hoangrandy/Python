@@ -41,7 +41,7 @@ def encrypt(word):
         first_letter = word[0]
         encrypt_end = 'est'
         encrypt_conson = encrypt_word + first_letter + encrypt_end
-        return (encrypt_conson)
+        return encrypt_conson
 
 
 def decrypt(word):
@@ -80,16 +80,27 @@ def translate(word,mode):
     indiv_words = word.split()
     encrypt_toggle = 'E'  # Get the user choice 'E' and save to a variable
     decrypt_toggle = 'D'  # Get the user choice 'D' and save it in a variable.
+    my_list = []
+
+
     for words in indiv_words:
         if mode == encrypt_toggle:
             encrypt(words)
-            print (encrypt(word))
+
+            my_list.append(encrypt(words))
+            new_list = list(reversed(my_list))
+
+
 
         elif mode == decrypt_toggle:
             decrypt(words)
-            print (decrypt(word))
+            my_list.append(decrypt(words))
+
+            print(my_list)
 
 
+    output = ' '.join(new_list)
+    print(output)
 
 
 
@@ -108,7 +119,7 @@ def choose_mode(mode):
         exit()
 
 
-def main(): #fix
+def main():
     # Prompt the user for the message to be translated.
     # Translate the message by calling translate - save result.
     # Print the result - or 'Invalid message' if applicable.
@@ -117,6 +128,8 @@ def main(): #fix
     choose_mode(mode)
     word = input('Please enter the word or phrase you would like to be '
                  'encrypted/decrypted: ')
+
+
     translate(word,mode)
 
 
