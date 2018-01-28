@@ -2,112 +2,142 @@
 # Name:        crypto
 # Purpose:     CS 21 assignment # 3
 #
-# Author:
-# Date:
+# Author:      Randy Hoang
+# Date:        1/27/2018
 # -----------------------------------------------------------------------------
 """
-Enter your docstring with a one-line overview here
+This program Encrypt messages to a secret code or Decrypts a secret code
 
-and a more detailed description here.
+If you encrypt a message each word that starts with a vowel in the phrase will
+add tan to the end of each word.  If the word starts with a consonant it will
+take the first letter, move it to the end and add est.  Not only that but if
+you encrypt multiple words it will also reverse it.  Decrypt just reverses
+the encrypted message to regular text.
 """
 
 
 def starts_with_vowel(word):
     """
-    return True if the word starts with a vowel and False otherwise
+    This function will check if the first letter of (original word) is a vowel
+    using the input(word) as a parameter
+    RETURNS : true if vowel, false if not vowel
     """
 
 
-    for letter in word.split():
-        vowel_check = word[0]
-    if vowel_check in ['a', 'e', 'i', 'o', 'u']:
+    vowel_check = word[0] # Set the first letter of the word as a variable
+    if vowel_check in ['a', 'e', 'i', 'o', 'u']: # Check to see if vowel
         return True
     else:
         return False
-    
+
 
 def encrypt(word):
     """
-    encrypt a single word into the secret language
-    If the input starts with a vowel, then add tan to the end
-    If the input starts with a non-vowel then take the first letter
-    add it to the end instead and follow up with 'est'
+    This function will encrypt the inputted (word). Add tan at the end of the
+    word if the word starts with a vowel.  If word starts with a consonant
+    then take the first letter move it to the end and add 'est' then reverse
+    the phrase
+    RETURNS: the encrypted message
     """
 
-
-    if starts_with_vowel(word) == True:
-        vowel_add = 'tan'
-        print (word + vowel_add)
-    elif starts_with_vowel(word) == False:
-        encrypt_word = word[1:]
-        first_letter = word[0]
-        encrypt_end = 'est'
-        print(encrypt_word + first_letter + encrypt_end)
-
-
+    if starts_with_vowel(word) == True:  # Runs the vowel check function
+        vowel_add = 'tan' # Add 'tan' if the word starts with a vowel
+        encrypt_vowel = word + vowel_add # Assign to variable the output
+        return encrypt_vowel # return output
+    elif starts_with_vowel(word) == False: # Runs vowel check for consonants
+        encrypt_word = word[1:] # word except first letter
+        first_letter = word[0] # first letter
+        encrypt_end = 'est' # Add est to the end
+        encrypt_conson = encrypt_word + first_letter + encrypt_end # output
+        return encrypt_conson # return output
 
 
 def decrypt(word):
     """
-    decrypt a single word from the secret language
-    If the word is not a valid word in the secret language, return None
+    This function will decrypt a secret message back to the user input
+    RETURNS: The original message
     """
-    remove_tan = word[:-3]
-    if 'tan' in word:
-        print(word)
+    if len(word) < 4: # Exit function if input is less than 4 letters
+        print('Wrong input. Please enter an encrpyted message')
+        main() # Return to main if invalid
+    remove_tan = word[0:-3] # store input except last three letters 'tan'
+    remove_est = word[0:-4] # Store input except last three letters + conson
 
+    est = 'est'
+    vowel = ['a', 'e', 'i', 'o','u'] # Store vowels in a variable
+    beg_letter = word[-4] # original consonant
+    if starts_with_vowel(word) == True and 'tan' in word: # if vowel + has tan
+        return remove_tan # return input - 'tan'
 
-
-
-def translate(text, mode):
-    """
-    Enter your function docstring here
-    """
-    # Translate (encrypt or decrypt) the whole message
-    # Split the text into a list of words
-    # if mode is 'E' encrypt each of the words in the list
-    # if mode id 'D' decrypt each word in the list
-    # Build a new list with these translated words
-    # Reverse the list
-    # join the list of reversed translated words into a single string
-    # and return it
-
-def choose_mode():
-    """
-    Prompt the user for input repeatedly until they enter 'E' or 'D'.
-    Return the user's choice.
-    """
-
-
-    user_input = input("Press 'E' to encrypt or 'D' to Decrypt: ")
-    if user_input == 'E':
-        return user_input
-    elif user_input == 'D':
-        return user_input
+    elif beg_letter not in vowel and est in word and 'tan' not in word:
+        decrypt_conson =  beg_letter + remove_est # original consonant + word
+        return decrypt_conson # Return message
     else:
-        print("Please enter a valid key (Make sure you capitalize!)")
+        print('Wrong input. Please enter an encrpyted message')
         exit()
 
+
+def translate(word,mode):
+    """
+    This function takes each words and runs it through encrypt or decrypt
+    and adding it to the list, then concat the words together
+    RETURN: prints output
+    """
+
+
+    indiv_words = word.split() # split the phrase and store it
+    encrypt_toggle = 'E'  # Get the user choice 'E' and save to a variable
+    decrypt_toggle = 'D'  # Get the user choice 'D' and save it in a variable.
+    my_list = [] # create a list
+
+
+    for words in indiv_words: # loop for each word in list
+        if mode == encrypt_toggle: # If user selected Encrypt make it go to
+            encrypt(words) # Encrypt function
+
+            my_list.append(encrypt(words)) # Add encrypted words to the list
+            new_list = list(reversed(my_list)) # Reverse the list
+
+
+
+        elif mode == decrypt_toggle: # If user select Decrypt make it go to
+            decrypt(words) # Decrypt function
+            my_list.append(decrypt(words)) # Add words to the list
+            new_list = list(reversed(my_list)) # Rever the list
+
+
+
+
+    output = ' '.join(new_list) # Concatenate the list
+    print("The secret message is: ",output) # print out the list
+    exit()
+
+
+def choose_mode(mode):
+    """
+    This function will Return the users mode selection
+    RETURNS: User selection in variable 'mode'
+    """
+
+    if mode == 'E': # If the input is E return E
+        return mode
+    elif mode == 'D':
+        return mode # If the input is D return D
+    else:
+        print("Please enter a valid key (Make sure you capitalize!)")
+        main() # Return to main if user did not select the correct option
 
 
 def main():
 
-    # Prompt the user for the message to be translated.
-    # Translate the message by calling translate - save result.
-    # Print the result - or 'Invalid message' if applicable.
 
-    encrypt_toggle = 'E'  # Get the user choice 'E' and save to a variable
-    decrypt_toggle = 'D'  # Get the user choice 'D' and save it in a variable.
-
-    choose_mode()
+    mode = input("Press 'E' to Encrypt or 'D' to Decrypt: ")
+    choose_mode(mode)
     word = input('Please enter the word or phrase you would like to be '
                  'encrypted/decrypted: ')
-    if choose_mode == encrypt_toggle: #fix this shit
-        encrypt(word)
-    elif choose_mode == decrypt_toggle:
-        decrypt(word)
 
 
+    translate(word,mode) # Make input go to translate function
 
 
 
