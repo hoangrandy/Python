@@ -6,14 +6,20 @@
 # Date:        1/27/2018
 # -----------------------------------------------------------------------------
 """
-Enter your docstring with a one-line overview here
-and a more detailed description here.
+This program Encrypt messages to a secret code or Decrypts a secret code
+
+If you encrypt a message each word that starts with a vowel in the phrase will
+add tan to the end of each word.  If the word starts with a consonant it will
+take the first letter, move it to the end and add est.  Not only that but if
+you encrypt multiple words it will also reverse it.  Decrypt just reverses
+the encrypted message to regular text.
 """
 
 
 def starts_with_vowel(word):
     """
-    return True if the word starts with a vowel and False otherwise
+    This function will check if the first letter of (original word) is a vowel
+    RETURNS : true if vowel, false if not vowel
     """
 
 
@@ -26,10 +32,11 @@ def starts_with_vowel(word):
 
 def encrypt(word):
     """
-    encrypt a single word into the secret language
-    If the input starts with a vowel, then add tan to the end
-    If the input starts with a non-vowel then take the first letter
-    add it to the end instead and follow up with 'est'
+    This function will encrypt the inputted message. Add tan at the end of the
+    word if the word starts with a vowel.  If word starts with a consonant
+    then take the first letter move it to the end and add 'est' then reverse
+    the phrase
+    RETURNS: the encrypted message
     """
 
     if starts_with_vowel(word) == True: 
@@ -46,8 +53,8 @@ def encrypt(word):
 
 def decrypt(word):
     """
-    decrypt a single word from the secret language
-    If the word is not a valid word in the secret language, return None
+    This function will decrypt a secret message back to the user input
+    RETURNS: The original message
     """
     if len(word) < 4:
         print('Wrong input. Please enter an encrpyted message')
@@ -55,13 +62,13 @@ def decrypt(word):
     remove_tan = word[0:-3]
     remove_est = word[0:-4]
 
-    est = word[-3:]
+    est = 'est'
     vowel = ['a', 'e', 'i', 'o','u']
     beg_letter = word[-4]
     if starts_with_vowel(word) == True and 'tan' in word:
         return remove_tan
 
-    elif beg_letter not in vowel and est in word:
+    elif beg_letter not in vowel and est in word and 'tan' not in word:
         decrypt_conson =  beg_letter + remove_est
         return decrypt_conson
     else:
@@ -71,7 +78,9 @@ def decrypt(word):
 
 def translate(word,mode):
     """
-    Enter your function docstring here
+    This function takes each words and runs it through encrypt or decrypt
+    and adding it to the list, then concat the words together
+    RETURN: prints output
     """
     # Translate (encrypt or decrypt) the whole message
 
@@ -114,8 +123,8 @@ def translate(word,mode):
 
 def choose_mode(mode):
     """
-    Prompt the user for input repeatedly until they enter 'E' or 'D'.
-    Return the user's choice.
+    This function will Return the users mode selection
+    RETURNS: User selection in variable 'mode'
     """
 
     if mode == 'E':
@@ -128,9 +137,7 @@ def choose_mode(mode):
 
 
 def main():
-    # Prompt the user for the message to be translated.
-    # Translate the message by calling translate - save result.
-    # Print the result - or 'Invalid message' if applicable.
+    
 
     mode = input("Press 'E' to Encrypt or 'D' to Decrypt: ")
     choose_mode(mode)
