@@ -1,6 +1,6 @@
 # -----------------------------------------------------------------------------
 # Name:        crypto
-# Purpose:     CS 21 assignment # 3
+# Purpose:     encrypts messages and decrypts them
 #
 # Author:      Randy Hoang
 # Date:        1/27/2018
