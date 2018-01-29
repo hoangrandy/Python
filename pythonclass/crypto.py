@@ -69,7 +69,7 @@ def decrypt(word):
     if starts_with_vowel(word) == True and 'tan' in word: # if vowel + has tan
         return remove_tan # return input - 'tan'
 
-    elif beg_letter not in vowel and est in word and 'tan' not in word:
+    elif beg_letter not in vowel and est in word:
         decrypt_conson =  beg_letter + remove_est # original consonant + word
         return decrypt_conson # Return message
     else:
