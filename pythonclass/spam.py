@@ -22,6 +22,16 @@ def spam_indicator(text):
     """
     # This function returns the spam indicator rounded to two decimals
 
+    set_input = set()
+    new_text = text.split()
+    for word in new_text:
+        set_input.add(word)
+    #text_split = text.split() another possible method to create a set
+    #new_set = set(text_split)
+    #print(new_set)
+    
+
+
 def classify(indicator):
     """
     Enter your function docstring here
@@ -33,13 +43,16 @@ def get_input():
     Enter your function docstring here
     """
     # Prompt the user for input and return the input
+    user_input = input('Please enter your message: ')
+    return user_input
 
 def main():
     # Get the user input and save it in a variable
     # Call spam_indicator to compute the spam indicator and save it
     # Print the spam_indicator
     # Call classify to print the classification
-
+    user_input = get_input()
+    spam_indicator(user_input)
 
 if __name__ == '__main__':
     main()
