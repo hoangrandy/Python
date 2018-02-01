@@ -23,6 +23,7 @@ def spam_indicator(text):
     # This function returns the spam indicator rounded to two decimals
 
     set_input = set() # Create an empty set
+    text = text.lower() # lower case all the words in the input
     new_text = text.split() # Split the user input
     for word in new_text: # For every word that is in the table
         set_input.add(word) # Store it in this set, set_input
@@ -31,6 +32,7 @@ def spam_indicator(text):
     spam_match = set_input & SPAM_WORDS #Join the two sets and see what matches
     spam_checker = len(spam_match)/len(set_input) # see the % of spam words
     spam_check = f'{spam_checker:.2f}' # Store spam_checker with 2 decimal pnt
+
     return spam_check
 
 
@@ -56,7 +58,7 @@ def main():
     # Call classify to print the classification
     user_input = get_input()
     spam_indicator(user_input)
-    classify(spam_check)
+
 
 if __name__ == '__main__':
     main()
