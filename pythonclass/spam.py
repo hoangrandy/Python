@@ -1,14 +1,16 @@
 # -----------------------------------------------------------------------------
 # Name:        spam
-# Purpose:
+# Purpose:     determines if a message is spam or not
 #
-# Author:
-# Date:
+# Author:      Randy Hoang
+# Date:        02/01/2018
 # -----------------------------------------------------------------------------
 """
-Enter your module docstring with a one-line overview here
+This program determines whether or not your message is considered spam
 
-and a more detailed description here.
+This is based on the number of unique words that are in the message, it will
+take the number of spam words and divide it by the total unique words in the
+message given.
 """
 SPAM_WORDS = {'opportunity', 'inheritance', 'money', 'rich', 'dictator',
               'discount', 'save', 'free', 'offer', 'credit',
@@ -18,9 +20,9 @@ SPAM_WORDS = {'opportunity', 'inheritance', 'money', 'rich', 'dictator',
 
 def spam_indicator(text):
     """
-    Enter your function docstring here
+    This function returns the spam indicator rounded to two decimals
     """
-    # This function returns the spam indicator rounded to two decimals
+
 
     set_input = set() # Create an empty set
     text = text.lower() # lower case all the words in the input
@@ -31,7 +33,8 @@ def spam_indicator(text):
     #new_set = set(text_split)
     spam_match = set_input & SPAM_WORDS #Join the two sets and see what matches
     spam_checker = len(spam_match)/len(set_input) # see the % of spam words
-    spam_check = f'{spam_checker:.2f}' # Store spam_checker with 2 decimal pnt
+    spam_check = round(spam_checker,2) # Store spam_checker with 2 decimal pnt
+
 
     return spam_check
 
@@ -39,25 +42,40 @@ def spam_indicator(text):
 
 def classify(indicator):
     """
-    Enter your function docstring here
+    This function will test if the spam_check is considered spam or not
+    If it is higher than 10%, it is SPAM, otherwise print ham
+    PRINTs spam or ham
     """
     # This function prints the spam classification
+    if indicator <= .1: # if the percentage is lower than 10% than not spam
+        print('The message is: HAM')
+    elif indicator > .1: # if percentage is higher than 10% of unique words
+        print('The message is SPAM')  # SPAAAAAAAAAAAM
 
 def get_input():
     """
-    Enter your function docstring here
+    This function prompts the user for input
+    RETURNS: input
     """
     # Prompt the user for input and return the input
     user_input = input('Please enter your message: ')
-    return user_input
+    return user_input # return user input
 
 def main():
     # Get the user input and save it in a variable
-    # Call spam_indicator to compute the spam indicator and save it
-    # Print the spam_indicator
-    # Call classify to print the classification
     user_input = get_input()
+
+    # Call spam_indicator to compute the spam indicator and save it
     spam_indicator(user_input)
+
+    spam_check = spam_indicator(user_input)
+    # Print the spam_indicator
+    print('Spam Indicator: ',spam_check)
+
+    # Call classify to print the classification
+
+    classify(spam_check)
+
 
 
 if __name__ == '__main__':
