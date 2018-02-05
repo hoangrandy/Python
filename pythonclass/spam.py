@@ -7,11 +7,11 @@
 # -----------------------------------------------------------------------------
 """
 This program determines whether or not your message is considered spam
-
 This is based on the number of unique words that are in the message, it will
 take the number of spam words and divide it by the total unique words in the
 message given.
 """
+import string
 SPAM_WORDS = {'opportunity', 'inheritance', 'money', 'rich', 'dictator',
               'discount', 'save', 'free', 'offer', 'credit',
               'loan', 'winner', 'warranty', 'lifetime', 'medicine',
@@ -22,14 +22,13 @@ def spam_indicator(text):
     """
     This function returns the spam indicator rounded to two decimals
     """
+    # These next two lines removes the punctuation from the input
+    translator = str.maketrans(' ', ' ', string.punctuation)
+    no_punc = (text.translate(translator))
 
-    for char in text:
-        if char in " ?.!/;:":
-            text.replace(char, '')
     set_input = set() # Create an empty set
-    text = text.lower() # lower case all the words in the input
-    strip = text.strip('!,')
-    new_text = strip.split() # Split the user input
+    output = no_punc.lower() # lower case all the words in the input
+    new_text = output.split() # Split the user input
 
     for word in new_text: # For every word that is in the table
         set_input.add(word) # Store it in this set, set_input
@@ -39,9 +38,6 @@ def spam_indicator(text):
     spam_match = set_input & SPAM_WORDS #Join the two sets and see what matches
     spam_checker = len(spam_match)/len(set_input) # see the % of spam words
     spam_check = round(spam_checker,2) # Store spam_checker with 2 decimal pnt
-
-    print(spam_check)
-    print(set_input)
 
 
     return spam_check
