@@ -62,15 +62,19 @@ def count_words(filename):
     """
     # build and return the dictionary for the given filename
     word_dict = {}
-    with open('pride.txt','r', encoding = 'utf') as my_file:
+    with open('pride.txt','r', encoding = 'utf-8') as my_file:
         for line in my_file:
             for word in line.split():
                 word = word.strip(string.punctuation)
                 lower_word = word.lower()
-            return lower_word
-            
-            word_dict[lower_word] = word_dict.get(lower_word, 0) + 1
-            print(word_dict)
+                print(lower_word)
+
+            #word_dict["test"] = lower_word
+            #print (word_dict)
+                #if lower_word not in word_dict:
+                #    word_dict[lower_word] = 0
+                # word_dict[lower_word] = word_dict.get(lower_word, 0) + 1
+            #print(word_dict)
 
 def report(word_dict):
     """     Enter your function docstring here     """
