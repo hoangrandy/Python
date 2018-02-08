@@ -56,9 +56,21 @@ def draw_cloud(input_count, min_length=0):
 
 
 def count_words(filename):
-    """     Enter your function docstring here     """
+    """
+    reads a given file, line by line, then word by word,
+    and returns a dictionary
+    """
     # build and return the dictionary for the given filename
-
+    word_dict = {}
+    with open('pride.txt','r', encoding = 'utf') as my_file:
+        for line in my_file:
+            for word in line.split():
+                word = word.strip(string.punctuation)
+                lower_word = word.lower()
+            return lower_word
+            
+            word_dict[lower_word] = word_dict.get(lower_word, 0) + 1
+            print(word_dict)
 
 def report(word_dict):
     """     Enter your function docstring here     """
@@ -73,7 +85,8 @@ def main():
 
 # If you want to generate a word cloud, uncomment the line below.
 # draw_cloud(word_count)
-
+    my_file = open('pride.txt')
+    count_words(my_file)
 
 if __name__ == '__main__':
     main()
