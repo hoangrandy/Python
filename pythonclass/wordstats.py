@@ -7,7 +7,6 @@
 # -----------------------------------------------------------------------------
 """
 Docstring: Enter your one-line overview here
-
 and your detailed description
 """
 import string
@@ -23,7 +22,6 @@ import random
 def draw_cloud(input_count, min_length=0):
     """
     Generate a word cloud based on the input count dictionary specified.
-
     Parameters:
     input_count (dict): represents words and their corresponding counts.
     min_length (int):  optional - defaults to 0.
@@ -62,24 +60,26 @@ def count_words(filename):
     """
     # build and return the dictionary for the given filename
     word_dict = {}
-    with open('pride.txt','r', encoding = 'utf-8') as my_file:
+    with open('text.txt','r', encoding = 'utf-8') as my_file:
         for line in my_file:
             for word in line.split():
                 word = word.strip(string.punctuation)
                 lower_word = word.lower()
-                print(lower_word)
+                if word in lower_word:
+                    word_dict[word] = lower_word.count(word)
 
-            #word_dict["test"] = lower_word
-            #print (word_dict)
-                #if lower_word not in word_dict:
-                #    word_dict[lower_word] = 0
-                # word_dict[lower_word] = word_dict.get(lower_word, 0) + 1
-            #print(word_dict)
+    return word_dict
+
 
 def report(word_dict):
     """     Enter your function docstring here     """
     # report on various statistics based on the given word count dictionary
-
+    for word in sorted(word_dict): #prints words in alphabetical order
+        print(f'{word}: {word_dict[word]}') #build a list of words by freq
+    frequency_list = sorted(word_dict, key = word_dict.get, reverse = True)
+    print("The words sorted by frequency: ")
+    for word in frequency_list:
+        print(f'{word}: {word_dict[word]}')
 
 def main():
 # get the input filename and save it in a variable
@@ -89,8 +89,12 @@ def main():
 
 # If you want to generate a word cloud, uncomment the line below.
 # draw_cloud(word_count)
-    my_file = open('pride.txt')
-    count_words(my_file)
+    my_file = open('text.txt')
+    word_dict = count_words(my_file)
+    print(word_dict)
+    #report(word_dict)
+
+
 
 if __name__ == '__main__':
     main()
