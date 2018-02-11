@@ -65,9 +65,11 @@ def count_words(filename):
             for word in line.split():
                 word = word.strip(string.punctuation)
                 lower_word = word.lower()
-                if word in lower_word:
-                    word_dict[word] = lower_word.count(word)
-
+                #word_dict[word] = lower_word.count(word)
+                if lower_word not in word_dict:
+                    word_dict[lower_word] = 1
+                else:
+                    word_dict[lower_word] += 1
     return word_dict
 
 
@@ -75,7 +77,7 @@ def report(word_dict):
     """     Enter your function docstring here     """
     # report on various statistics based on the given word count dictionary
     for word in sorted(word_dict): #prints words in alphabetical order
-        print(f'{word}: {word_dict[word]}') #build a list of words by freq
+        print(f'{word}: {word_dict[word]}') 
     frequency_list = sorted(word_dict, key = word_dict.get, reverse = True)
     print("The words sorted by frequency: ")
     for word in frequency_list:
@@ -92,7 +94,7 @@ def main():
     my_file = open('text.txt')
     word_dict = count_words(my_file)
     print(word_dict)
-    #report(word_dict)
+    report(word_dict)
 
 
 
