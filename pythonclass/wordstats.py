@@ -14,6 +14,7 @@ import string
 import tkinter
 import tkinter.font
 import random
+import pickle
 
 
 # The draw_cloud function is only needed for the optional part:
@@ -60,13 +61,16 @@ def count_words(filename):
     """
     # build and return the dictionary for the given filename
     word_dict = {}
-    with open('text.txt','r', encoding = 'utf-8') as my_file:
-        for line in my_file:
-            for word in line.split():
-                word = word.strip(string.punctuation)
-                lower_word = word.lower()
+    with open('text.txt','r', encoding = 'utf-8') as my_file: # opens file
+        for line in my_file: # read the file line by line
+            for word in line.split(): # read the line word by word
+                word = word.strip(string.punctuation) # remove the punctuations
+                no_punc = word.strip(string.digits) #fix this, doesn't work
+                #translator = str.maketrans('','', '0123456789')
+                #no_punc = (word.translate(translator))
+                lower_word = no_punc.lower() # lowercases all the words
                 #word_dict[word] = lower_word.count(word)
-                if lower_word not in word_dict:
+                if lower_word not in word_dict: #and lower_word not in numbers:
                     word_dict[lower_word] = 1
                 else:
                     word_dict[lower_word] += 1
@@ -75,13 +79,21 @@ def count_words(filename):
 
 def report(word_dict):
     """     Enter your function docstring here     """
-    # report on various statistics based on the given word count dictionary
+
     for word in sorted(word_dict): #prints words in alphabetical order
-        print(f'{word}: {word_dict[word]}') 
+        alpha_order = (f'{word}: {word_dict[word]}')
+        with open('example.txt', 'a', encoding='utf-8') as new_file:
+            new_file.write(alpha_order + '\n' ) #writes into new file
+
+    # These next few lines will order the dictionary and print out top 5 words
     frequency_list = sorted(word_dict, key = word_dict.get, reverse = True)
     print("The words sorted by frequency: ")
-    for word in frequency_list:
+    frequency_top = frequency_list[:5]
+    for word in frequency_top:
         print(f'{word}: {word_dict[word]}')
+        
+
+
 
 def main():
 # get the input filename and save it in a variable
@@ -93,7 +105,6 @@ def main():
 # draw_cloud(word_count)
     my_file = open('text.txt')
     word_dict = count_words(my_file)
-    print(word_dict)
     report(word_dict)
 
 
