@@ -85,13 +85,20 @@ def report(word_dict):
         with open('example.txt', 'a', encoding='utf-8') as new_file:
             new_file.write(alpha_order + '\n' ) #writes into new file
 
+
+    # These next few line will find the longest word and print it out
+    print("The longest word is: ")
+    longestword = max(word_dict, key = len)
+    print(longestword)
+
+
     # These next few lines will order the dictionary and print out top 5 words
     frequency_list = sorted(word_dict, key = word_dict.get, reverse = True)
-    print("The words sorted by frequency: ")
-    frequency_top = frequency_list[:5]
-    for word in frequency_top:
+    print("The top 5 words sorted by frequency: ")
+    frequency_top = frequency_list[:5] # Store the top 5 words into a var
+    for word in frequency_top: # For each word in frequency_top (5) print
         print(f'{word}: {word_dict[word]}')
-        
+
 
 
 
