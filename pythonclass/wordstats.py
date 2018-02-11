@@ -6,15 +6,19 @@
 # Date:        2/07/2018
 # -----------------------------------------------------------------------------
 """
-Docstring: Enter your one-line overview here
-and your detailed description
+Output the longest word,  top 5 most frequent words, create a new file w/ words
+
+This program will ask the user for a file input.  It will print out one of the
+longest words in the text file, print out the 5 most frequently used words, and
+will create a new file called out.txt with the words in alpha order and the
+number of times it was used in the file.
 """
 import string
 # The following imports are needed for the draw_cloud function.
 import tkinter
 import tkinter.font
 import random
-import pickle
+
 
 
 # The draw_cloud function is only needed for the optional part:
@@ -56,12 +60,12 @@ def draw_cloud(input_count, min_length=0):
 
 def count_words(filename):
     """
-    reads a given file, line by line, then word by word,
-    and returns a dictionary
+    Reads a given file, line by line, then word by word
+    Returns: Dictionary of the word and number of times it has appeared in file
     """
     # build and return the dictionary for the given filename
     word_dict = {}
-    with open('text.txt','r', encoding = 'utf-8') as my_file: # opens file
+    with open('pride.txt','r', encoding = 'utf-8') as my_file: # opens file
         for line in my_file: # read the file line by line
             for word in line.split(): # read the line word by word
                 word = word.strip(string.punctuation) # remove the punctuations
@@ -82,14 +86,14 @@ def report(word_dict):
 
     for word in sorted(word_dict): #prints words in alphabetical order
         alpha_order = (f'{word}: {word_dict[word]}')
-        with open('example.txt', 'a', encoding='utf-8') as new_file:
+        with open('out.txt', 'a', encoding='utf-8') as new_file:
             new_file.write(alpha_order + '\n' ) #writes into new file
 
 
     # These next few line will find the longest word and print it out
     print("The longest word is: ")
-    longestword = max(word_dict, key = len)
-    print(longestword)
+    longestword = max(word_dict, key = len) # Find the longest word
+    print(longestword) #Print it out
 
 
     # These next few lines will order the dictionary and print out top 5 words
@@ -103,14 +107,9 @@ def report(word_dict):
 
 
 def main():
-# get the input filename and save it in a variable
-# call count_words to build the dictionary for the given file
-# save the dictionary in the variable word_count
-# call report to report on the contents of the dictionary word_count
-
 # If you want to generate a word cloud, uncomment the line below.
 # draw_cloud(word_count)
-    my_file = open('text.txt')
+    my_file = open('pride.txt')
     word_dict = count_words(my_file)
     report(word_dict)
 
