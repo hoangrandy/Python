@@ -7,7 +7,6 @@
 # -----------------------------------------------------------------------------
 """
 Output the longest word,  top 5 most frequent words, create a new file w/ words
-
 This program will ask the user for a file input.  It will print out one of the
 longest words in the text file, print out the 5 most frequently used words, and
 will create a new file called out.txt with the words in alpha order and the
@@ -65,15 +64,12 @@ def count_words(filename):
     """
     # build and return the dictionary for the given filename
     word_dict = {}
-    with open('pride.txt','r', encoding = 'utf-8') as my_file: # opens file
+    with open(filename,'r', encoding = 'utf-8') as my_file: # opens file
         for line in my_file: # read the file line by line
+
             for word in line.split(): # read the line word by word
-                word = word.strip(string.punctuation) # remove the punctuations
-                no_punc = word.strip(string.digits) #fix this, doesn't work
-                #translator = str.maketrans('','', '0123456789')
-                #no_punc = (word.translate(translator))
-                lower_word = no_punc.lower() # lowercases all the words
-                #word_dict[word] = lower_word.count(word)
+                strip_word = word.strip(string.punctuation + string.digits)
+                lower_word = strip_word.lower() # lowercases all the words
                 if lower_word not in word_dict: #and lower_word not in numbers:
                     word_dict[lower_word] = 1
                 else:
@@ -109,8 +105,8 @@ def report(word_dict):
 def main():
 # If you want to generate a word cloud, uncomment the line below.
 # draw_cloud(word_count)
-    my_file = open('pride.txt')
-    word_dict = count_words(my_file)
+    filename = input("Please enter file name here: ")
+    word_dict = count_words(filename)
     report(word_dict)
 
 
