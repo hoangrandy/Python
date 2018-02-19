@@ -22,3 +22,14 @@ class Car(object):
         self.fuel_efficiency = fuel_efficiency
         self.mileage = mileage
         self.gas_in_tank = gas
+
+    def add_gas(self,amount):
+        """
+        Add gas to the car.
+        Parameter:
+        amount(float): The amount of gas to be added to gallons.
+        Returns:
+        the updated car object(Car).
+        """
+        self.gas_in_tank+= amount
+        return self
