@@ -31,5 +31,24 @@ class Car(object):
         Returns:
         the updated car object(Car).
         """
-        self.gas_in_tank+= amount
+        self.gas_in_tank += amount
+        return self
+
+    def drive(self, distance):
+        """
+        Drive a car a given distance, if possible.
+        If there is not enough gas, drive as much as possible.
+        Parameter:
+        distance (float): the distance to be driven in miles.
+        Return:
+        the updated car object (Car)
+        """
+        max_distance = self.fuel_efficiency * self.gas_in_tank
+        if distance <= max_distance: # we can drive the max_distance
+            self.mileage += distance
+            self.gas_in_tank = (self.gas_in_tank -
+                                distance / self.fuel_efficiency)
+        else:   # not enough gas
+            self.mileage += max_distance # drive as far as possible
+            self.gas_in_tank = 0
         return self
