@@ -1,12 +1,13 @@
 # -----------------------------------------------------------------------------
 # Name:        wordstats
-# Purpose:
+# Purpose:     Statistics on a textfile
 #
 # Author:      Randy Hoang
 # Date:        2/07/2018
 # -----------------------------------------------------------------------------
 """
 Output the longest word,  top 5 most frequent words, create a new file w/ words
+
 This program will ask the user for a file input.  It will print out one of the
 longest words in the text file, print out the 5 most frequently used words, and
 will create a new file called out.txt with the words in alpha order and the
@@ -60,6 +61,7 @@ def draw_cloud(input_count, min_length=0):
 def count_words(filename):
     """
     Reads a given file, line by line, then word by word
+    Parameter: filename input from main
     Returns: Dictionary of the word and number of times it has appeared in file
     """
     # build and return the dictionary for the given filename
@@ -68,17 +70,25 @@ def count_words(filename):
         for line in my_file: # read the file line by line
 
             for word in line.split(): # read the line word by word
-                strip_word = word.strip(string.punctuation + string.digits)
-                lower_word = strip_word.lower() # lowercases all the words
-                if lower_word not in word_dict: #and lower_word not in numbers:
-                    word_dict[lower_word] = 1
-                else:
-                    word_dict[lower_word] += 1
+                strip_word = word.strip(string.punctuation)
+                strip_no = strip_word.strip(string.digits)
+                lower_word = strip_no.lower() # lowercases all the words
+                if lower_word:
+                    if lower_word in word_dict.keys():
+                        word_dict[lower_word] += 1
+                    else:
+                        word_dict[lower_word] = 1
     return word_dict
 
 
 def report(word_dict):
-    """     Enter your function docstring here     """
+    """
+    This will print out the words in alpha order into a file, print the
+    longest word, and print the top 5 most used words in the file and how many
+    times.
+    Note that if you already ran this program it will append over the file
+    Returns: None except prints
+    """
 
     for word in sorted(word_dict): #prints words in alphabetical order
         alpha_order = (f'{word}: {word_dict[word]}')
