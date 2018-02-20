@@ -43,3 +43,6 @@ class Account(object):
     def __str__(self):
         # Let's return the account holder name and the amount they have
         return f'{self.holder}, Account Balance:{self.balance}'
+
+    def __le__(self,other):
+        return self.balance <= other.balance
