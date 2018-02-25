@@ -14,13 +14,19 @@ import tkinter
 
 class Robot(object):
     """
-    Enter the class docstring here
+    This is the super class Robot
 
     Arguments:
-    list the arguments here (__init__'s arguments)
+    name(string): The robot's name
+    color(string): The color of the robot
+    row(int): This is the position of the robot in the x-axis
+    column(int): This is the position of the robot in the y-axis
 
     Attributes:
-    list ALL the attributes here (ALL the instance variables)
+    name(string): The robot's name
+    color(string): The color of the robot
+    row(int): This is the position of the robot in the x-axis
+    column(int): This is the position of the robot in the y-axis
     """
 
     # class variable used by the show method
@@ -51,63 +57,84 @@ class Robot(object):
         self.column = column
 
 
-    def __str__(self):
+    def __str__(self): # when printed: 'name' is a 'color' robot lost in a maze
         return self.name + ' is a ' + self.color + ' robot lost in a maze.'
 
-    def __gt__(self, other):
-        pass
+    def __gt__(self, other): # This will compare two robots based on battery
+        return self.robot > other.robot
 
+    @property # This is used so recharge doesn't need parenthesis
     def recharge(self):
         """
-        Enter the method's docstring here
+        This method will recharge the robot's battery to self.full class var
         """
-        pass
+        return full = 20
 
     def one_step_forward(self):
         """
-        Enter the method's docstring here
+        This method move the robot one step in the corresponding direction if
+        possible,  and decrement the battery value by 1.  A move may not be
+        possible if the robot is out of battery,  an obstacle is encountered or
+        the boundary of the maze is reached.
         """
         pass
 
     def one_step_back(self):
         """
-        Enter the method's docstring here
+        This method move the robot one step in the corresponding direction if
+        possible,  and decrement the battery value by 1.  A move may not be
+        possible if the robot is out of battery,  an obstacle is encountered or
+        the boundary of the maze is reached.
         """
         pass
 
     def one_step_right(self):
         """
-        Enter the method's docstring here
+        This method move the robot one step in the corresponding direction if
+        possible,  and decrement the battery value by 1.  A move may not be
+        possible if the robot is out of battery,  an obstacle is encountered or
+        the boundary of the maze is reached.
         """
         pass
 
     def one_step_left(self):
         """
-        Enter the method's docstring here
+        This method move the robot one step in the corresponding direction if
+        possible,  and decrement the battery value by 1.  A move may not be
+        possible if the robot is out of battery,  an obstacle is encountered or
+        the boundary of the maze is reached.
         """
         pass
 
     def forward(self, steps):
         """
-        Enter the method's docstring here
+        These methods take a number of steps as an argument and move the robot
+        that many steps in the specified direction,  as far as possible. These
+        methods should call the corresponding one_step method repeatedly.
         """
         pass
 
     def backward(self, steps):
         """
-        Enter the method's docstring here
+        These methods take a number of steps as an argument and move the robot
+        that many steps in the specified direction,  as far as possible. These
+        methods should call the corresponding one_step method repeatedly.
         """
         pass
 
     def right(self, steps):
         """
-        Enter the method's docstring here
+        These methods take a number of steps as an argument and move the robot
+        that many steps in the specified direction,  as far as possible. These
+        methods should call the corresponding one_step method repeatedly.
         """
         pass
 
     def left(self, steps):
         """
-        Enter the method's docstring here
+        These methods take a number of steps as an argument and move the robot
+        that many steps in the specified direction,  as far as possible. These
+        methods should call the corresponding one_step method repeatedly.
         """
         pass
 
