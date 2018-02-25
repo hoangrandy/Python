@@ -21,12 +21,14 @@ class Robot(object):
     color(string): The color of the robot
     row(int): This is the position of the robot in the x-axis
     column(int): This is the position of the robot in the y-axis
+    battery(int):  This is the amount of steps the robot has remaining
 
     Attributes:
     name(string): The robot's name
     color(string): The color of the robot
     row(int): This is the position of the robot in the x-axis
     column(int): This is the position of the robot in the y-axis
+    battery(int):  This is the amount of steps the robot has remaining
     """
 
     # class variable used by the show method
@@ -50,11 +52,15 @@ class Robot(object):
     # A robot with a fully charged battery can take up to 20 steps
     full = 20
 
+
+
     def __init__(self,  name, color, row=0, column=0):
         self.name = name
         self.color = color
         self.row = row
         self.column = column
+        self.battery = self.full
+
 
 
     def __str__(self): # when printed: 'name' is a 'color' robot lost in a maze
@@ -63,12 +69,17 @@ class Robot(object):
     def __gt__(self, other): # This will compare two robots based on battery
         return self.robot > other.robot
 
+    def battery(self): #fix later
+        print('Battery:', self.battery)
+        pass
+
     @property # This is used so recharge doesn't need parenthesis
     def recharge(self):
         """
         This method will recharge the robot's battery to self.full class var
         """
-        return full = 20
+        self.full = 20
+        return self
 
     def one_step_forward(self):
         """
@@ -77,7 +88,10 @@ class Robot(object):
         possible if the robot is out of battery,  an obstacle is encountered or
         the boundary of the maze is reached.
         """
-        pass
+            if self.battery >= 1:
+                self.row += 1
+                self.battery -= 1
+        return self
 
     def one_step_back(self):
         """
@@ -86,7 +100,10 @@ class Robot(object):
         possible if the robot is out of battery,  an obstacle is encountered or
         the boundary of the maze is reached.
         """
-        pass
+        if self.battery >= 1:
+            self.row -= 1
+            self.battery -= 1
+        return self
 
     def one_step_right(self):
         """
@@ -95,7 +112,10 @@ class Robot(object):
         possible if the robot is out of battery,  an obstacle is encountered or
         the boundary of the maze is reached.
         """
-        pass
+        if self.battery >= 1:
+            self.column += 1
+            self.battery -= 1
+        return self
 
     def one_step_left(self):
         """
@@ -104,7 +124,10 @@ class Robot(object):
         possible if the robot is out of battery,  an obstacle is encountered or
         the boundary of the maze is reached.
         """
-        pass
+        if self.battery >= 1:
+            self.row -= 1
+            self.battery -= 1
+        return self
 
     def forward(self, steps):
         """
@@ -112,7 +135,12 @@ class Robot(object):
         that many steps in the specified direction,  as far as possible. These
         methods should call the corresponding one_step method repeatedly.
         """
-        pass
+        if self.battery >= steps:
+            self.row += steps
+            self.battery -= steps
+        #elif self.battery < steps:#fix this
+
+        return self
 
     def backward(self, steps):
         """
@@ -120,7 +148,10 @@ class Robot(object):
         that many steps in the specified direction,  as far as possible. These
         methods should call the corresponding one_step method repeatedly.
         """
-        pass
+        if self.battery >= steps:
+            self.row -= steps
+            self.battery -= steps
+        return self
 
     def right(self, steps):
         """
@@ -128,7 +159,10 @@ class Robot(object):
         that many steps in the specified direction,  as far as possible. These
         methods should call the corresponding one_step method repeatedly.
         """
-        pass
+        if self.battery >= steps:
+            self.column += steps
+            self.battery -= steps
+        return self
 
     def left(self, steps):
         """
@@ -136,7 +170,10 @@ class Robot(object):
         that many steps in the specified direction,  as far as possible. These
         methods should call the corresponding one_step method repeatedly.
         """
-        pass
+        if self.battery >= steps:
+            self.row -= steps
+            self.battery -= steps
+        return self
 
     # The method below has been written for you
     # You can use it when testing your class
