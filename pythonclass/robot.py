@@ -2,8 +2,8 @@
 # Name:       robot
 # Purpose:    class definition for robots
 #
-# Author:
-# Date:
+# Author:     Randy Hoang
+# Date:       2/24/2018
 # -----------------------------------------------------------------------------
 
 """
@@ -45,10 +45,14 @@ class Robot(object):
     full = 20
 
     def __init__(self,  name, color, row=0, column=0):
-        pass
+        self.name = name
+        self.color = color
+        self.row = row
+        self.column = column
+
 
     def __str__(self):
-        pass
+        return self.name + ' is a ' + self.color + ' robot lost in a maze.'
 
     def __gt__(self, other):
         pass
