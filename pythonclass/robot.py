@@ -67,18 +67,15 @@ class Robot(object):
         return self.name + ' is a ' + self.color + ' robot lost in a maze.'
 
     def __gt__(self, other): # This will compare two robots based on battery
-        return self.robot > other.robot
+        return self.battery > other.battery
 
-    def battery(self): #fix later
-        print('Battery:', self.battery)
-        pass
 
     @property # This is used so recharge doesn't need parenthesis
     def recharge(self):
         """
         This method will recharge the robot's battery to self.full class var
         """
-        self.full = 20
+        self.battery = self.full
         return self
 
     def one_step_forward(self):
@@ -91,6 +88,9 @@ class Robot(object):
         if self.battery >= 1:
             self.row += 1
             self.battery -= 1
+        #elif self.battery == 0:
+         #   print('Battery is at zero, please recharge!')
+
         return self
 
     def one_step_back(self):
@@ -146,7 +146,7 @@ class Robot(object):
         methods should call the corresponding one_step method repeatedly.
         """
         for movement in range(steps):
-            self.one_step_backward()
+            self.one_step_back()
         return self
 
     def right(self, steps):
