@@ -90,25 +90,21 @@ class Robot(object):
         the boundary of the maze is reached.
         """
 
-        if self.row < self.maze_size:
+        if self.row + 1 < self.maze_size:
 
             if self.battery >= 1:
                 self.row += 1
                 self.battery -= 1
-        if self.row == self.maze_size:
-            print('Robot is at the edge can not move that way any more.')
+
+            if self.maze[self.row][self.column] == False:
+                print("You can not go there, there is an obstacle in the way")
+                self.row -= 1
+                self.battery += 1
+
+        elif self.row + 1 == self.maze_size:
+            print('Robot is at the edge, can not move that way any more.')
 
 
-
-        if self.maze[self.row][self.column] == False:
-            print("You can not go there, there is an obstacle in the way")
-            self.row -= 1
-            self.battery += 1
-
-        #if self.row > self.maze_size:
-         #   print("You can not go outside of the boundaries, going back")
-          #  self.row -= 1
-           # self.battery += 1
         return self
 
     def one_step_back(self):
@@ -118,17 +114,21 @@ class Robot(object):
         possible if the robot is out of battery,  an obstacle is encountered or
         the boundary of the maze is reached.
         """
-        if self.battery >= 1:
-            self.row -= 1
-            self.battery -= 1
-        if self.maze[self.row][self.column] == False:
-            print("You can not go there, there is an obstacle in the way")
-            self.row += 1
-            self.battery += 1
-        if self.row < 0:
-            print("You can not go outside of the boundaries, going back")
-            self.row += 1
-            self.battery += 1
+        if self.row > 0:
+
+            if self.battery >= 1:
+                self.row -= 1
+                self.battery -= 1
+
+            if self.maze[self.row][self.column] == False:
+                print("You can not go there, there is an obstacle in the way")
+                self.row += 1
+                self.battery += 1
+
+        elif self.row == 0:
+            print('Robot is at the edge, can not move that way any more.')
+
+
         return self
 
     def one_step_right(self):
@@ -138,17 +138,20 @@ class Robot(object):
         possible if the robot is out of battery,  an obstacle is encountered or
         the boundary of the maze is reached.
         """
-        if self.battery >= 1:
-            self.column += 1
-            self.battery -= 1
-        if self.maze[self.row][self.column] == False:
-            print("You can not go there, there is an obstacle in the way")
-            self.column -= 1
-            self.battery += 1
-        if self.row > self.maze_horizontal:
-            print("You can not go outside of the boundaries, going back")
-            self.column -= 1
-            self.battery += 1
+        if self.column + 1 < self.maze_horizontal:
+
+            if self.battery >= 1:
+                self.column += 1
+                self.battery -= 1
+
+            if self.maze[self.row][self.column] == False:
+                print("You can not go there, there is an obstacle in the way")
+                self.column -= 1
+                self.battery += 1
+
+        elif self.column + 1 == self.maze_horizontal:
+            print('Robot is at the edge, can not move that way any more.')
+
         return self
 
     def one_step_left(self):
@@ -158,13 +161,20 @@ class Robot(object):
         possible if the robot is out of battery,  an obstacle is encountered or
         the boundary of the maze is reached.
         """
-        if self.battery >= 1:
-            self.column -= 1
-            self.battery -= 1
-        if self.maze[self.row][self.column] == False:
-            print("You can not go there, there is an obstacle in the way")
-            self.column += 1
-            self.battery += 1
+        if self.column > 0:
+
+            if self.battery >= 1:
+                self.column -= 1
+                self.battery -= 1
+
+            if self.maze[self.row][self.column] == False:
+                print("You can not go there, there is an obstacle in the way")
+                self.column += 1
+                self.battery += 1
+
+        elif self.column == 0:
+            print('Robot is at the edge, can not move that way any more.')
+
         return self
 
     def forward(self, steps):
