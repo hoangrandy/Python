@@ -88,8 +88,10 @@ class Robot(object):
         if self.battery >= 1:
             self.row += 1
             self.battery -= 1
-        #elif self.battery == 0:
-         #   print('Battery is at zero, please recharge!')
+        if self.maze[self.row][self.column] == False:
+            print("You can not go there, there is an obstacle in the way")
+            self.row -= 1
+            self.battery += 1
 
         return self
 
@@ -103,6 +105,10 @@ class Robot(object):
         if self.battery >= 1:
             self.row -= 1
             self.battery -= 1
+        if self.maze[self.row][self.column] == False:
+            print("You can not go there, there is an obstacle in the way")
+            self.row += 1
+            self.battery += 1
         return self
 
     def one_step_right(self):
@@ -115,6 +121,10 @@ class Robot(object):
         if self.battery >= 1:
             self.column += 1
             self.battery -= 1
+        if self.maze[self.row][self.column] == False:
+            print("You can not go there, there is an obstacle in the way")
+            self.column -= 1
+            self.battery += 1
         return self
 
     def one_step_left(self):
@@ -127,6 +137,10 @@ class Robot(object):
         if self.battery >= 1:
             self.row -= 1
             self.battery -= 1
+        if self.maze[self.row][self.column] == False:
+            print("You can not go there, there is an obstacle in the way")
+            self.row += 1
+            self.battery += 1
         return self
 
     def forward(self, steps):
