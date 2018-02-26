@@ -298,3 +298,40 @@ class Robot(object):
 
 
 # Enter you UnderwaterRobot Class definition below
+class UnderwaterRobot(Robot):
+    """
+    This is the super class Robot
+
+    Arguments:
+    name(string): The robot's name
+    color(string): The color of the robot
+    depth(int):  This is how deep the robot is underwater
+    row(int): This is the position of the robot in the x-axis
+    column(int): This is the position of the robot in the y-axis
+    battery(int):  This is the amount of steps the robot has remaining
+
+    Attributes:
+    name(string): The robot's name
+    color(string): The color of the robot
+    depth(int):  This is how deep the robot is underwater
+    row(int): This is the position of the robot in the x-axis
+    column(int): This is the position of the robot in the y-axis
+    battery(int):  This is the amount of steps the robot has remaining
+    """
+
+    def __init__(self, name, color, depth, row=0, column=0):
+        self.depth = depth
+        super().__init__(name,color,row,column)
+
+
+    def __str__(self):# when printed: 'name' is a 'color' robot lost in a maze
+        return self.name + ' is a ' + self.color + ' robot diving under water.'
+
+    def dive(self, distance):
+        """
+        The dive method  adds a given distance to the underwater robot's depth.
+        The row and column attributes are not affected. We'll assume that the robot
+        does not use any battery charge in this case.
+        """
+        self.depth += distance
+        return self
