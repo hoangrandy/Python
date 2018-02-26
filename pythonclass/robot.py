@@ -47,7 +47,11 @@ class Robot(object):
             [True, False, True, True, True, True, True, True, False, True],
             [True, True, True, True, True, True, True, True, False, True]]
 
-    maze_size = len(maze)
+    maze_size = len(maze) # vertical row count
+    maze_horizontal = len(maze[0])
+
+
+
     # class variable to represent a full charge
     # A robot with a fully charged battery can take up to 20 steps
     full = 20
@@ -85,14 +89,22 @@ class Robot(object):
         possible if the robot is out of battery,  an obstacle is encountered or
         the boundary of the maze is reached.
         """
+
+        #insert check here
         if self.battery >= 1:
             self.row += 1
             self.battery -= 1
+
+
         if self.maze[self.row][self.column] == False:
             print("You can not go there, there is an obstacle in the way")
             self.row -= 1
             self.battery += 1
 
+        if self.row > self.maze_size:
+            print("You can not go outside of the boundaries, going back")
+            self.row -= 1
+            self.battery += 1
         return self
 
     def one_step_back(self):
@@ -107,6 +119,10 @@ class Robot(object):
             self.battery -= 1
         if self.maze[self.row][self.column] == False:
             print("You can not go there, there is an obstacle in the way")
+            self.row += 1
+            self.battery += 1
+        if self.row < 0:
+            print("You can not go outside of the boundaries, going back")
             self.row += 1
             self.battery += 1
         return self
@@ -125,6 +141,10 @@ class Robot(object):
             print("You can not go there, there is an obstacle in the way")
             self.column -= 1
             self.battery += 1
+        if self.row > self.maze_horizontal:
+            print("You can not go outside of the boundaries, going back")
+            self.column -= 1
+            self.battery += 1
         return self
 
     def one_step_left(self):
@@ -135,11 +155,11 @@ class Robot(object):
         the boundary of the maze is reached.
         """
         if self.battery >= 1:
-            self.row -= 1
+            self.column -= 1
             self.battery -= 1
         if self.maze[self.row][self.column] == False:
             print("You can not go there, there is an obstacle in the way")
-            self.row += 1
+            self.column += 1
             self.battery += 1
         return self
 
