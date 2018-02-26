@@ -90,10 +90,14 @@ class Robot(object):
         the boundary of the maze is reached.
         """
 
-        #insert check here
-        if self.battery >= 1:
-            self.row += 1
-            self.battery -= 1
+        if self.row < self.maze_size:
+
+            if self.battery >= 1:
+                self.row += 1
+                self.battery -= 1
+        if self.row == self.maze_size:
+            print('Robot is at the edge can not move that way any more.')
+
 
 
         if self.maze[self.row][self.column] == False:
@@ -101,10 +105,10 @@ class Robot(object):
             self.row -= 1
             self.battery += 1
 
-        if self.row > self.maze_size:
-            print("You can not go outside of the boundaries, going back")
-            self.row -= 1
-            self.battery += 1
+        #if self.row > self.maze_size:
+         #   print("You can not go outside of the boundaries, going back")
+          #  self.row -= 1
+           # self.battery += 1
         return self
 
     def one_step_back(self):
