@@ -74,7 +74,7 @@ class Robot(object):
         return self.battery > other.battery
 
 
-    @property # This is used so recharge doesn't need parenthesis
+
     def recharge(self):
         """
         This method will recharge the robot's battery to self.full class var
