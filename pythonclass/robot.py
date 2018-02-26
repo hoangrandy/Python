@@ -88,9 +88,9 @@ class Robot(object):
         possible if the robot is out of battery,  an obstacle is encountered or
         the boundary of the maze is reached.
         """
-            if self.battery >= 1:
-                self.row += 1
-                self.battery -= 1
+        if self.battery >= 1:
+            self.row += 1
+            self.battery -= 1
         return self
 
     def one_step_back(self):
@@ -135,11 +135,8 @@ class Robot(object):
         that many steps in the specified direction,  as far as possible. These
         methods should call the corresponding one_step method repeatedly.
         """
-        if self.battery >= steps:
-            self.row += steps
-            self.battery -= steps
-        #elif self.battery < steps:#fix this
-
+        for movement in range(steps):
+            self.one_step_forward()
         return self
 
     def backward(self, steps):
@@ -148,9 +145,8 @@ class Robot(object):
         that many steps in the specified direction,  as far as possible. These
         methods should call the corresponding one_step method repeatedly.
         """
-        if self.battery >= steps:
-            self.row -= steps
-            self.battery -= steps
+        for movement in range(steps):
+            self.one_step_backward()
         return self
 
     def right(self, steps):
@@ -159,9 +155,8 @@ class Robot(object):
         that many steps in the specified direction,  as far as possible. These
         methods should call the corresponding one_step method repeatedly.
         """
-        if self.battery >= steps:
-            self.column += steps
-            self.battery -= steps
+        for movement in range(steps):
+            self.one_step_right()
         return self
 
     def left(self, steps):
@@ -170,9 +165,8 @@ class Robot(object):
         that many steps in the specified direction,  as far as possible. These
         methods should call the corresponding one_step method repeatedly.
         """
-        if self.battery >= steps:
-            self.row -= steps
-            self.battery -= steps
+        for movement in range(steps):
+            self.one_step_left()
         return self
 
     # The method below has been written for you
