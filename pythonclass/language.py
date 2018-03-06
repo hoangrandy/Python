@@ -7,9 +7,9 @@
 # -----------------------------------------------------------------------------
 """
 module docstring
-
 """
 import random
+import string
 # Enter your imports here
 
 
@@ -22,7 +22,28 @@ def learn(filename):
     Parameters: open a filename
     Returns: A Tuple (first word, dictionary of words followed by next words)
     """
-    pass  # Take out pass statement and enter your code
+    list = [] # Declare an empty set for the words
+    with open(filename, 'r', encoding='utf-8') as my_file:
+
+        text = my_file.read()
+
+
+    for char in string.punctuation:
+        text = text.replace(char, '')
+        lower_text = text.lower()
+    for word in lower_text.split():
+        list.append(word)
+
+    first = list[0]
+    words = {}
+
+    for index in list:
+
+    #words = (first,dict)
+    #print (words)
+
+
+
 
 
 def sentence_generator(filename, length=10):
@@ -35,3 +56,11 @@ def sentence_generator(filename, length=10):
     """
     random.seed(1)  # Set the seed for the random generator - do not remove
     # Enter your code here
+
+def main():
+    learn('spider.txt')
+
+
+
+if __name__ == "__main__":
+    main()
